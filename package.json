@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/nealchapman1995/yelp-camp/issues"
   },
-  "homepage": "https://github.com/nealchapman1995/yelp-camp#readme"
+  "homepage": "https://github.com/nealchapman1995/yelp-camp#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.2",
+    "nodemon": "^2.0.6"
+  }
 }
