@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Campgrounds</title>
-</head>
-<body>
+<% layout('/layouts/boilerplate') %>
+
 	<h1>All Camgrounds</h1>
 	<h5><a href="campgrounds/new">Make A New Campground</a></h5>
 	<ul>
@@ -11,6 +7,3 @@
 			<li><a href="campgrounds/<%= campground._id %>"><%= campground.title %></a></li>
 		<%}%>
 	</ul>
-
-</body>
-</html>
