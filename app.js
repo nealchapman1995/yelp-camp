@@ -6,7 +6,7 @@ const Campground = require('./models/campground');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
-const ExpressError = require('./utils/ExressError');
+const ExpressError = require('./utils/ExpressError');
 
 
 
@@ -42,6 +42,7 @@ app.get('/campgrounds/new', (req, res) => {
 })
 
 app.post('/campgrounds', catchAsync(async (req, res) => {
+	if (!req.body.campground) throw new ExpressError('invalid Campground Data', 400);
 	const campground = new Campground(req.body.campground);
 	await campground.save();
 	res.redirect(`/campgrounds/${campground._id}`);
@@ -80,5 +81,6 @@ app.all('*', (req, res, next) => {
 
 app.use((err, req, res, next) => {
 	const {statusCode = 500, message = 'Something went wrong'} = err;
-	res.status(statusCode).send(message)
+	if(!err.message) err.message = 'Oh No, Something went wrong'
+	res.status(statusCode).render('errors', { err }) 
 })
